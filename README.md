@@ -62,3 +62,82 @@ Email email = new TextEmailBuilder()
 
 es.enviar(email);
 ```
+
+USING VELOCITY
+===========
+
+you can use velocity to generate the template as following:
+
+1. Create the template file like the following :
+
+***templateFile.vm***
+```txt
+Hello You
+
+$someText
+
+#foreach($book in $books)
+   $foreach.count - $book 
+#end
+
+
+```
+
+2. Create a model class with the parameters for the template:
+```java
+@VelocityTemplate(templateFileName="templateFile.vm")
+public class ModelTemplate extends AbstractVelocityTemplate {
+
+ 	@VelocityParameter
+ 	private String someText = "HELLO WORLD" ;
+ 	
+ 	@VelocityParameter
+ 	private List<String> books = Arrays.asList("Book1", "Book2", "Book3") ;
+ 	
+ 	@Override
+ 	public String getTemplateDirectory() {
+ 		return "/path/to/template";
+ 	}
+
+}
+```
+
+After that you can generate the String that can be send in email
+```java
+VelocityGeneratorService vgs = new VelocityGeneratorService();
+		
+String emailTextBody = vgs.generateString(new ModelTemplate());
+
+System.out.println(emailTextBody);
+```
+
+Full example with velocity
+
+```java
+
+   public static void main(String[] args) {
+		String emailTextBody = createEmailBody();
+		sendEmail(emailTextBody);
+	}
+
+	public static String createEmailBody() {
+		VelocityGeneratorService vgs = new VelocityGeneratorService();
+		String emailTextBody = vgs.generateString(new ModelTemplate());
+		return emailTextBody;
+	}
+	
+	public static void sendEmail(String body) {
+		AutenticacaoEmail authEmail = AutenticacaoEmail.configure("yourUsername", "yourPassword");
+		EmailConfiguration emailConfig = EmailConfiguration.configure(authEmail);
+		EmailService es = EmailService.create(emailConfig);
+		Email email = new TextEmailBuilder()
+		  	.from("yourEmail","yourPersonalName")
+		  	.to("emailTo")
+		  	.subject("subject")
+		  	.textBody(body)
+		  	.addFile(new File("/path/to/file.txt"))
+		  	.build();
+
+		es.enviar(email);
+	}
+```
