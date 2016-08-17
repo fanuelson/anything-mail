@@ -75,7 +75,7 @@ public class TextEmailBuilder implements EmailBuilder {
 	public TextEmailBuilder textBody(String textBody) {
 		try {
 			MimeBodyPart messageBodyPart = new MimeBodyPart();
-			messageBodyPart.setContent(textBody, "text/html");
+			messageBodyPart.setContent(textBody, "text/plain");
 			email.getMultiPart().addBodyPart(messageBodyPart);
 		} catch (MessagingException e) {
 			throw new RuntimeException("ERRO TEXT BODY: " + textBody, e);
