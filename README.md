@@ -1,6 +1,14 @@
 anything-mail -  Java Mail Builder
 ===========
 
+
+* Features:
+  * Builder Pattern to create an email programmatically.
+  * Java DSL.
+  * Multiple file attachments.
+  * Velocity API included
+
+
 Example:
 ------
 ```java
