@@ -5,6 +5,7 @@ import java.util.List;
 
 import javax.mail.Multipart;
 import javax.mail.internet.InternetAddress;
+import javax.mail.internet.MimeMultipart;
 
 public class Email {
 
@@ -13,7 +14,7 @@ public class Email {
 	private List<InternetAddress> ccAddresses = new ArrayList<InternetAddress>();
 	private List<InternetAddress> bccAddresses = new ArrayList<InternetAddress>();
 	private String subject;
-	private Multipart multiPart;
+	private Multipart multiPart = new MimeMultipart();
 
 	public InternetAddress getFromAddress() {
 		return fromAddress;
