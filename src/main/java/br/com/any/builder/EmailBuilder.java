@@ -1,8 +1,8 @@
 package br.com.any.builder;
 
-import javax.mail.Multipart;
+import br.com.any.model.Email;
 
 public interface EmailBuilder {
 
-	Multipart build();
+	Email build();
 }

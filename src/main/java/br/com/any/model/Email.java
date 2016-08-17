@@ -1,5 +1,6 @@
 package br.com.any.model;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.mail.Multipart;
@@ -8,9 +9,9 @@ import javax.mail.internet.InternetAddress;
 public class Email {
 
 	private InternetAddress fromAddress;
-	private List<InternetAddress> toAddresses;
-	private List<InternetAddress> ccAddresses;
-	private List<InternetAddress> bccAddresses;
+	private List<InternetAddress> toAddresses = new ArrayList<InternetAddress>();
+	private List<InternetAddress> ccAddresses = new ArrayList<InternetAddress>();
+	private List<InternetAddress> bccAddresses = new ArrayList<InternetAddress>();
 	private String subject;
 	private Multipart multiPart;
 
