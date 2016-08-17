@@ -11,13 +11,13 @@ import org.apache.velocity.runtime.RuntimeConstants;
 import br.com.any.annotation.VelocityTemplate;
 import br.com.any.template.AbstractVelocityTemplate;
 
-public class VelocityGenerator implements Serializable {
+public class VelocityGeneratorService implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
 	private VelocityEngine ve;
 
-	public VelocityGenerator() {
+	public VelocityGeneratorService() {
 		ve = new VelocityEngine();
 	}
 
