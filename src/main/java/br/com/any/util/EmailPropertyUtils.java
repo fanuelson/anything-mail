@@ -6,7 +6,7 @@ import java.util.Properties;
 
 public final class EmailPropertyUtils {
 
-	static final String EMAIL_PROPERTIES_FILE_NAME = "email.properties";
+	static final String EMAIL_PROPERTIES_FILE_NAME = "simpleEmail.properties";
 	private static Properties prop;
 
 	private EmailPropertyUtils() {
