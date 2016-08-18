@@ -68,7 +68,7 @@ USING VELOCITY
 
 you can use velocity to generate the template as following:
 
-1. Create the template file like the following :
+ 1 - Create the template file like the following :
 
 ***templateFile.vm***
 ```txt
@@ -83,7 +83,7 @@ $someText
 
 ```
 
-2. Create a model class with the parameters for the template:
+ 2 - Create a model class with the parameters for the template:
 ```java
 @VelocityTemplate(templateFileName="templateFile.vm")
 public class ModelTemplate extends AbstractVelocityTemplate {
@@ -96,11 +96,13 @@ public class ModelTemplate extends AbstractVelocityTemplate {
  	
  	@Override
  	public String getTemplateDirectory() {
- 		return "/path/to/template";
+ 		return "/path/to/template/";
  	}
 
 }
 ```
+NOTE: The API will search the absolute directory of the OS <br />
+if your template is under /src/main/resources/ then return "/src/main/resources/" instead of return "/path/to/template"; <br />
 
 After that you can generate the String that can be send in email
 ```java
