@@ -14,6 +14,8 @@ import br.com.any.template.AbstractVelocityTemplate;
 
 public class VelocityGeneratorService implements Serializable {
 
+	private static final String UTF_8 = "UTF-8";
+
 	private static final long serialVersionUID = 1L;
 	
 	private static final String RESOURCE_PATH = "/src/main/resources/";
@@ -38,7 +40,7 @@ public class VelocityGeneratorService implements Serializable {
 
 		VelocityContext context = new VelocityContext(velocityTemplate.getParametros());
 		String templateFileName = velocityTemplate.getClass().getAnnotation(VelocityTemplate.class).templateFileName();
-		Template t = this.ve.getTemplate(templateDirectory+templateFileName);
+		Template t = this.ve.getTemplate(templateDirectory+templateFileName, UTF_8);
 
 		StringWriter writer = new StringWriter();
 
