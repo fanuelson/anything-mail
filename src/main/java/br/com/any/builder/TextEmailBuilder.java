@@ -15,6 +15,7 @@ import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeBodyPart;
 import javax.mail.util.ByteArrayDataSource;
 
+import br.com.any.exception.FileMailAttachmentException;
 import br.com.any.model.Email;
 
 public class TextEmailBuilder implements EmailBuilder {
@@ -91,9 +92,9 @@ public class TextEmailBuilder implements EmailBuilder {
 			fileBodyPart.setFileName(fileName);
 			email.getMultiPart().addBodyPart(fileBodyPart);
 		} catch (IOException ioe) {
-			throw new RuntimeException("ERRO ADD FILE: " + fileName, ioe);
+			throw new FileMailAttachmentException("ERROR ADDING FILE MAIL ATTACHMENT: " + fileName, ioe);
 		} catch (MessagingException e) {
-			throw new RuntimeException("ERRO ADD FILE: " + fileName, e);
+			throw new FileMailAttachmentException("ERROR ADDING FILE MAIL ATTACHMENT: " + fileName, e);
 		}
 		return this;
 	}
@@ -106,7 +107,7 @@ public class TextEmailBuilder implements EmailBuilder {
 			fileBodyPart.setFileName(file.getName());
 			email.getMultiPart().addBodyPart(fileBodyPart);
 		} catch (MessagingException e) {
-			throw new RuntimeException("ERRO ADD FILE: " + file.getName(), e);
+			throw new FileMailAttachmentException("ERROR ADDING FILE MAIL ATTACHMENT: " + file.getName(), e);
 		}
 		return this;
 	}
