@@ -18,7 +18,7 @@ EmailConfiguration emailConfig = EmailConfiguration.configure(authEmail);
 
 EmailService es = EmailService.create(emailConfig);
 
-Email email = new TextEmailBuilder()
+Email email = new EmailBuilder()
   	.from("yourEmail","yourPersonalName")
   	.to("emailTo")
   	.subject("subject")
@@ -52,7 +52,7 @@ EmailConfiguration emailConfig = EmailConfiguration.configure(authEmail, propert
 
 EmailService es = EmailService.create(emailConfig);
 
-Email email = new TextEmailBuilder()
+Email email = new EmailBuilder()
   	.from("yourEmail","yourPersonalName")
   	.to("emailTo")
   	.subject("subject")
@@ -108,9 +108,9 @@ After that you can generate the String that can be send in email
 ```java
 VelocityGeneratorService vgs = new VelocityGeneratorService();
 		
-String emailTextBody = vgs.generateString(new ModelTemplate());
+String emailHtmlBody = vgs.generateString(new ModelTemplate());
 
-System.out.println(emailTextBody);
+System.out.println(emailHtmlBody);
 ```
 
 Full example with velocity
@@ -118,25 +118,25 @@ Full example with velocity
 ```java
 
    public static void main(String[] args) {
-		String emailTextBody = createEmailBody();
-		sendEmail(emailTextBody);
+		String emailHtmlBody = createEmailBody();
+		sendEmail(emailHtmlBody);
 	}
 
 	public static String createEmailBody() {
 		VelocityGeneratorService vgs = new VelocityGeneratorService();
-		String emailTextBody = vgs.generateString(new ModelTemplate());
-		return emailTextBody;
+		String emailHtmlBody = vgs.generateString(new ModelTemplate());
+		return emailHtmlBody;
 	}
 	
 	public static void sendEmail(String body) {
 		AutenticacaoEmail authEmail = AutenticacaoEmail.configure("yourUsername", "yourPassword");
 		EmailConfiguration emailConfig = EmailConfiguration.configure(authEmail);
 		EmailService es = EmailService.create(emailConfig);
-		Email email = new TextEmailBuilder()
+		Email email = new EmailBuilder()
 		  	.from("yourEmail","yourPersonalName")
 		  	.to("emailTo")
 		  	.subject("subject")
-		  	.textBody(body)
+		  	.htmlBody(body)
 		  	.addFile(new File("/path/to/file.txt"))
 		  	.build();
 
