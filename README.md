@@ -143,3 +143,29 @@ Full example with velocity
 		es.enviar(email);
 	}
 ```
+
+
+Instruction to add this project as maven dependency in your project:
+------
+
+add this repository in your pom.xml file
+
+```xml
+
+	<repositories>
+		<repository>
+		    <id>jitpack.io</id>
+		    <url>https://jitpack.io</url>
+		</repository>
+	</repositories>
+```
+
+and add this dependency
+
+```xml
+	<dependency>
+	    <groupId>com.github.fanuelson</groupId>
+	    <artifactId>anything-mail</artifactId>
+	    <version>LAST RELEASE</version>
+	</dependency>
+```
