@@ -1,6 +1,6 @@
 anything-mail -  Java Mail Builder
 ===========
-
+by Fanuel
 
 * Features:
   * Builder Pattern to create an email programmatically.
