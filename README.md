@@ -16,7 +16,11 @@ AutenticacaoEmail authEmail = AutenticacaoEmail.configure("yourUsername", "yourP
 
 EmailConfiguration emailConfig = EmailConfiguration.configure(authEmail);
 
+//DEBUG MODE TRUE BY DEFAULT
 EmailService es = EmailService.create(emailConfig);
+
+//CHANGE DEBUG MODE TO FALSE
+//EmailService es = EmailService.create(emailConfig, false);
 
 Email email = new EmailBuilder()
   	.from("yourEmail","yourPersonalName")

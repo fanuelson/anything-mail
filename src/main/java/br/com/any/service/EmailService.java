@@ -20,8 +20,17 @@ public class EmailService {
 		session.setDebug(true);
 	}
 	
+	private EmailService(EmailConfiguration emailConfig, boolean enableDebug) {
+		session = emailConfig.getSession();
+		session.setDebug(enableDebug);
+	}
+	
 	public static EmailService create(EmailConfiguration emailConfig){
 		return new EmailService(emailConfig);
+	}
+	
+	public static EmailService create(EmailConfiguration emailConfig, boolean enableDebug){
+		return new EmailService(emailConfig, enableDebug);
 	}
 
 	public void enviar(Email email) throws RuntimeException {
